@@ -1,4 +1,5 @@
-﻿using tabuleiro;
+﻿using System.Collections.Generic;
+using tabuleiro;
 
 namespace xadrez
 {
@@ -6,6 +7,7 @@ namespace xadrez
     {
         public char coluna { get; set; }
         public int linha { get; set; }
+
 
         public PosicaoXadrez(char coluna, int linha)
         {
