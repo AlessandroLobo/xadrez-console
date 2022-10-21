@@ -1,9 +1,8 @@
-﻿
-
-namespace tabuleiro
+﻿namespace tabuleiro
 {
     class Tabuleiro
     {
+
         public int linhas { get; set; }
         public int colunas { get; set; }
         private Peca[,] pecas;
@@ -27,7 +26,7 @@ namespace tabuleiro
 
         public bool existePeca(Posicao pos)
         {
-            validaPosicao(pos);
+            validarPosicao(pos);
             return peca(pos) != null;
         }
 
@@ -38,6 +37,7 @@ namespace tabuleiro
                 throw new TabuleiroException("Já existe uma peça nessa posição!");
             }
             pecas[pos.linha, pos.coluna] = p;
+            p.posicao = pos;
         }
 
         public Peca retirarPeca(Posicao pos)
@@ -50,7 +50,6 @@ namespace tabuleiro
             aux.posicao = null;
             pecas[pos.linha, pos.coluna] = null;
             return aux;
-
         }
 
         public bool posicaoValida(Posicao pos)
@@ -62,11 +61,11 @@ namespace tabuleiro
             return true;
         }
 
-        public void validaPosicao(Posicao pos)
+        public void validarPosicao(Posicao pos)
         {
             if (!posicaoValida(pos))
             {
-                throw new TabuleiroException("Posição inválida");
+                throw new TabuleiroException("Posição inválida!");
             }
         }
     }
